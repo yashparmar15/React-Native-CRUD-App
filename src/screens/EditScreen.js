@@ -9,14 +9,14 @@ const EditScreen = ({navigation}) => {
     const [title , setTitle] = useState(blogPost.title);
     const [content , setContent] = useState(blogPost.content);
 
-    return <View>
+    return <View style = {styles.container}>
         <Text style = {styles.label}>Edit Title :</Text>
         <TextInput style = {styles.TextInput} value = {title} onChangeText = {newTitle => setTitle(newTitle)} />
         <Text style = {styles.label}>Edit Content :</Text>
         <TextInput style = {styles.TextInput} value = {content} onChangeText = {newTitle => setContent(newTitle)} />
         <Button title = "Save Blog Post" onPress = {() => {
             editBlogPost(navigation.getParam('id'),title,content);
-            navigation.navigate('Index');
+            navigation.navigate('Show');
         }} />
     </View>
 }
@@ -26,15 +26,29 @@ const styles = StyleSheet.create({
         fontSize : 18,
         borderWidth : 1,
         borderColor : 'black',
-        padding : 5,
+        paddingVertical : 5,
+        paddingHorizontal : 15,
         margin : 5,
-        borderRadius : 10
+        borderRadius : 10,
+
+        
     },
     label : {
         fontSize : 20,
         marginBottom : 5,
         margin : 5,
-        fontWeight : 'bold'
+        fontWeight : 'bold',
+        marginTop : 20
+    },
+    container : {
+        marginHorizontal : 20,
+        borderColor : 'gray',
+        borderWidth : 3,
+        marginVertical : 30,
+        paddingBottom : 40,
+        paddingHorizontal : 10,
+        borderRadius : 20
+
     }
 });
 

@@ -6,8 +6,10 @@ const IndexScreen = ({navigation}) => {
     const {state , addBlogPost , deleteBlogPost} = useContext(Context);
 
 
-    return <View>
+    return <View style = {styles.container}>
+        <Text style = {styles.Users}>All Posts</Text>
         <FlatList 
+            style = {styles.FlatList}
             data = {state}
             keyExtractor = {(blogPost) => blogPost.title}
             renderItem = {({item}) => {
@@ -29,7 +31,7 @@ const IndexScreen = ({navigation}) => {
 IndexScreen.navigationOptions = ({navigation}) => {
     return {
         headerRight : <TouchableOpacity onPress = {() => navigation.navigate('Create')}>
-                <Feather name ="plus" style = {{fontSize : 30 , color : 'red'}} />
+                <Feather name ="plus" style = {{fontSize : 30 , color : 'black' }} />
             </TouchableOpacity>
     };
 }
@@ -39,14 +41,31 @@ const styles = StyleSheet.create ({
         flexDirection : 'row',
         justifyContent : 'space-between',
         paddingVertical : 20,
-        borderTopWidth : 1,
-        borderColor : 'gray'
+        padding : 20,
+        borderWidth : 2,
+        borderRadius : 20,
+        borderColor : 'gray',
+        marginBottom : 10
     },
     title : {
-        fontSize : 18
+        fontSize : 18,
+        fontWeight : 'bold'
     },
     icon : {
         fontSize : 24
+    },
+    FlatList : {
+        marginTop : 20,
+        marginHorizontal : 10
+    },
+    Users : {
+        marginTop : 20,
+        fontWeight : 'bold',
+        fontSize : 30,
+        alignSelf : 'center',
+    },
+    container : {
+        flex : 1,
     }
 });
 
